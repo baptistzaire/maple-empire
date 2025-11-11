@@ -1,57 +1,63 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	import { currentWether, knowledgeTree } from '$lib/stores';
 
 	export let id: number;
 	export let imageSrc: string;
 	export let position: { top: string; left: string };
 	export let size: { width: string; height: string };
 
-	let currentState: 'untapped' | 'tapping' | 'full' = 'untapped';
-	let sapLevel = 0; // percentage
+	export let state: 'untapped' | 'tapping' | 'full' = 'untapped';
+	export let sapLevel = 0; // percentage
 	const sapCapacity = 100;
 	const sapAmount = 10; // The amount of sap this tree's bucket holds
 
 	const dispatch = createEventDispatcher();
 
 	function handleTap() {
-		if (currentState === 'untapped') {
-			currentState = 'tapping';
+		if (state === 'untapped') {
+			state = 'tapping';
 			startSapFlow();
 		}
 	}
 
 	function startSapFlow() {
 		const interval = setInterval(() => {
-			sapLevel += 10; // Increase sap by 10% every second for demonstration
-			if (sapLevel >= sapCapacity) {
-				sapLevel = sapCapacity;
-				currentState = 'full';
-				clearInterval(interval);
+			if ($currentWether === 'Ideal') {
+				sapLevel += 10; // Increase sap by 10% every second for demonstration
+				if (sapLevel >= sapCapacity) {
+					sapLevel = sapCapacity;
+					state = 'full';
+					clearInterval(interval);
+				}
 			}
 		}, 1000);
 	}
 
 	function handleCollect() {
-		if (currentState === 'full') {
+		if (state === 'full') {
 			dispatch('collect', { amount: sapAmount });
 			sapLevel = 0;
-			currentState = 'untapped'; // For now, revert to untapped after collection
+			state = 'untapped'; // For now, revert to untapped after collection
 		}
 	}
 </script>
 
 <div class="absolute" style="left: {position.left}; top: {position.top}; width: {size.width}; height: {size.height};">
+	{#if $knowledgeTree.includes('tubing-network')}
+		<div class="absolute top-1/2 left-0 w-full h-1 bg-gray-400/50"></div>
+	{/if}
 	<img class="w-full h-full object-contain transition-transform duration-200 hover:scale-105" alt="A sugar maple tree" src={imageSrc} />
 
-	{#if currentState === 'untapped'}
+	{#if state === 'untapped'}
 		<button on:click={handleTap} class="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-green-600 px-3 py-1 text-xs font-bold text-white shadow-lg">Tap</button>
-	{:else if currentState === 'tapping'}
+	{:else if state === 'tapping'}
 		<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
 			<div class="w-6 h-8 rounded border-2 border-gray-500 bg-gray-300 relative overflow-hidden">
 				<div class="absolute bottom-0 left-0 w-full bg-blue-300" style="height: {sapLevel}%;"></div>
 			</div>
 		</div>
-	{:else if currentState === 'full'}
+	{:else if state === 'full'}
 		<div on:click={handleCollect} class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer">
 			<div class="absolute -top-6 animate-bounce">
 				<span class="material-symbols-outlined text-4xl text-blue-300" style="filter: drop-shadow(0 0 5px white);">water_drop</span>
