@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { upgrades, coins } from '$lib/stores';
+	import { upgrades, coins, mapleLeaves } from '$lib/stores';
 
 	const upgradeDetails = {
 		taps: { name: 'Maple Taps', description: 'Add more taps to each tree to collect sap faster.', icon: 'eco' },
@@ -65,4 +65,23 @@
 			</div>
 		{/each}
 	</main>
+
+	<!-- Knowledge Tree Link -->
+	<footer class="sticky bottom-0 p-4 pt-2 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+		<a href="/knowledge" class="flex w-full items-center justify-between rounded-xl bg-stone-100 p-4 dark:bg-stone-900/50">
+			<div class="flex items-center gap-4">
+				<div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+					<span class="material-symbols-outlined">science</span>
+				</div>
+				<div class="flex flex-1 flex-col justify-center">
+					<p class="font-medium text-stone-900 dark:text-white">Knowledge Tree</p>
+					<p class="text-sm text-stone-600 dark:text-stone-400">Use Maple Leaves to unlock permanent upgrades.</p>
+				</div>
+			</div>
+			<div class="flex h-8 min-w-10 shrink-0 items-center justify-end gap-2 rounded-full bg-stone-200 px-3 dark:bg-stone-800">
+				<span class="material-symbols-outlined text-amber-500">emoji_events</span>
+				<p class="text-sm font-bold text-stone-800 dark:text-amber-100">{$mapleLeaves}</p>
+			</div>
+		</a>
+	</footer>
 </div>

@@ -169,12 +169,8 @@
 
 	<!-- Bottom Navigation Bar -->
 	<footer class="relative z-10 w-full font-display">
-		<div class="p-4 pt-0">
-			<button on:click={endSeason} class="w-full mb-2 rounded-xl bg-red-600 py-4 text-center font-bold text-white shadow-lg">End Season (Prestige)</button>
-			<a href="/evaporator" class="w-full rounded-xl bg-primary py-4 text-center font-bold text-background-dark shadow-lg shadow-primary/30 block">Go to Evaporator</a>
-		</div>
 		<div class="flex border-t border-primary/20 bg-background-dark/80 px-4 pb-3 pt-2 backdrop-blur-sm">
-			<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+			<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="/">
 				<span class="material-symbols-outlined fill text-2xl">forest</span>
 				<p class="text-xs font-bold leading-normal tracking-wide">Sugarbush</p>
 			</a>

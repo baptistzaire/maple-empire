@@ -77,66 +77,67 @@
 </script>
 
 <div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
-	<header class="flex shrink-0 items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 justify-between sticky top-0 z-10 backdrop-blur-sm">
-		<a href="/" class="flex size-10 items-center justify-center">
-			<span class="material-symbols-outlined text-zinc-400 text-3xl">arrow_back</span>
-		</a>
-		<h1 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Backyard Evaporator</h1>
-	</header>
-	<main class="flex-1 px-4 py-2">
-		<!-- Stats Cards -->
-		<div class="grid grid-cols-2 gap-4">
-			<div class="flex flex-col gap-1.5 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800/50">
-				<p class="text-zinc-600 dark:text-zinc-400 text-sm font-medium leading-normal">Sap to Boil</p>
-				<p class="text-zinc-900 dark:text-white tracking-light text-2xl font-bold leading-tight">{totalSapAmount.toFixed(2)}L</p>
-			</div>
-			<div class="flex flex-col gap-1.5 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800/50">
-				<p class="text-zinc-600 dark:text-zinc-400 text-sm font-medium leading-normal">Firewood</p>
-				<p class="text-zinc-900 dark:text-white tracking-light text-2xl font-bold leading-tight">{$firewood}</p>
-			</div>
-		</div>
-		<!-- Evaporator Pan Visual & Temperature Gauge -->
-		<div class="mt-6 flex gap-4">
-			<div class="flex-1">
-				<div class="w-full gap-1 overflow-hidden aspect-[4/3] flex rounded-xl">
-					<div class="w-full bg-center bg-no-repeat bg-cover aspect-auto flex-1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYD2YpzajzV5MIRdciR9bkaKVhYaLA9ydA4ztis9r46lTFOzSg3u7R1El10xvj7AJ3nUUi1of3RcHSrzh7v41dbPLY9qWuVFZ7YzJzEQcL4mAFYz56zfqSfKFeqkqu7ctdGJye3X8bZzexTQ9R4spbdw72pj02e4eFB3_9JgyFb7DvEdP0X9t1F8j4XTtSZABZj8oFueNlc3a_tiVyoI-yf_q-L2SCRFIPF28FKg1rrUIpSHwU4qZVYJ0O7bS0geapDwRzTiuCwDI");'></div>
-				</div>
-			</div>
-			<!-- Temperature Gauge -->
-			<div class="flex flex-col-reverse items-center gap-2 w-16 bg-zinc-100 dark:bg-zinc-800/50 p-2 rounded-xl">
-				<span class="material-symbols-outlined text-orange-500 text-3xl">local_fire_department</span>
-				<div class="w-2 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-700 relative overflow-hidden">
-					<!-- Sweet Spot background -->
-					<div class="absolute inset-x-0 bg-green-500/30" style="top: 20%; bottom: 40%;"></div>
-					<!-- Temperature fill -->
-					<div class="w-full bg-primary absolute bottom-0" style="height: {tempPercent}%;"></div>
-				</div>
-				<p class="text-zinc-900 dark:text-white text-base font-bold">{temperature.toFixed(0)}°F</p>
-			</div>
-		</div>
-		<!-- Progress Bar -->
-		<div class="flex flex-col gap-3 p-4 mt-6 rounded-xl bg-zinc-100 dark:bg-zinc-800/50">
-			<div class="flex gap-6 justify-between">
-				<p class="text-zinc-900 dark:text-white text-base font-medium leading-normal">Sap to Syrup Progress</p>
-				<p class="text-zinc-900 dark:text-white text-sm font-normal leading-normal">{boilProgress.toFixed(0)}%</p>
-			</div>
-			<div class="rounded-full h-2 bg-zinc-200 dark:bg-zinc-700">
-				<div class="h-2 rounded-full bg-primary" style="width: {boilProgress}%;"></div>
-			</div>
-			<p class="text-zinc-600 dark:text-zinc-400 text-sm font-normal leading-normal">Keep the temp between 217-220°F for best results!</p>
-		</div>
-	</main>
-	<!-- Action Buttons Footer -->
-	<footer class="sticky bottom-0 p-4 pt-2 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-		<div class="grid grid-cols-2 gap-4">
-			<button on:click={addFuel} class="flex items-center justify-center gap-2 rounded-lg bg-orange-900/80 px-4 py-4 text-white font-bold text-base hover:bg-orange-900 transition-colors">
-				<span class="material-symbols-outlined">add</span>
-				Add Fuel
-			</button>
-			<button class="flex items-center justify-center gap-2 rounded-lg bg-primary/40 px-4 py-4 text-white/50 font-bold text-base cursor-not-allowed">
-				<span class="material-symbols-outlined">filter_alt</span>
-				Filter Syrup
-			</button>
-		</div>
-	</footer>
+<header class="flex shrink-0 items-center bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 justify-between sticky top-0 z-10 backdrop-blur-sm">
+<a href="/" class="flex size-10 items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400 text-3xl">arrow_back</span>
+</a>
+<h1 class="text-zinc-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Backyard Evaporator</h1>
+</header>
+<main class="flex-1 px-4 py-2">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800/50">
+<p class="text-zinc-600 dark:text-zinc-400 text-sm font-medium leading-normal">Fuel Level</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-500">local_fire_department</span>
+<p class="text-zinc-900 dark:text-white tracking-light text-2xl font-bold leading-tight">{$firewood}/10</p>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 rounded-xl p-4 bg-zinc-100 dark:bg-zinc-800/50">
+<p class="text-zinc-600 dark:text-zinc-400 text-sm font-medium leading-normal">Sap Input</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-500">water_drop</span>
+<p class="text-zinc-900 dark:text-white tracking-light text-2xl font-bold leading-tight">{totalSapAmount.toFixed(2)}L/hr</p>
+</div>
+</div>
+</div>
+<div class="mt-6 flex gap-4">
+<div class="flex-1">
+<div class="w-full gap-1 overflow-hidden aspect-[4/3] flex rounded-xl relative">
+<div class="w-full bg-center bg-no-repeat bg-cover aspect-auto flex-1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYD2YpzajzV5MIRdciR9bkaKVhYaLA9ydA4ztis9r46lTFOzSg3u7R1El10xvj7AJ3nUUi1of3RcHSrzh7v41dbPLY9qWuVFZ7YzJzEQcL4mAFYz56zfqSfKFeqkqu7ctdGJye3X8bZzexTQ9R4spbdw72pj02e4eFB3_9JgyFb7DvEdP0X9t1F8j4XTtSZABZj8oFueNlc3a_tiVyoI-yf_q-L2SCRFIPF28FKg1rrUIpSHwU4qZVYJ0O7bS0geapDwRzTiuCwDI");'></div>
+</div>
+</div>
+<div class="flex w-16 flex-col-reverse items-center gap-2 rounded-xl bg-zinc-100 p-2 dark:bg-zinc-800/50">
+<span class="material-symbols-outlined text-3xl text-orange-500">thermometer</span>
+<div class="relative w-2 flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-700">
+<div class="absolute inset-x-0 bg-green-500/30" style="top: 19%; bottom: 23%"></div>
+<div class="absolute bottom-0 w-full bg-primary" style="height: {tempPercent}%"></div>
+</div>
+<p class="text-base font-bold text-zinc-900 dark:text-white">{temperature.toFixed(0)}°F</p>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-3 rounded-xl bg-zinc-100 p-4 dark:bg-zinc-800/50">
+<div class="flex items-center justify-between gap-6">
+<p class="text-base font-medium text-zinc-900 dark:text-white">Batch Progress</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-zinc-500">timer</span>
+<p class="text-sm font-medium text-zinc-900 dark:text-white">{Math.ceil((100 - boilProgress) / 0.5 / 60)} minutes left</p>
+</div>
+</div>
+<div class="h-2 rounded-full bg-zinc-200 dark:bg-zinc-700">
+<div class="h-2 rounded-full bg-primary" style="width: {boilProgress}%"></div>
+</div>
+</div>
+</main>
+<footer class="sticky bottom-0 bg-background-light/80 p-4 pt-2 backdrop-blur-sm dark:bg-background-dark/80">
+<div class="grid grid-cols-2 gap-4">
+<button on:click={addFuel} class="flex items-center justify-center gap-2 rounded-lg bg-orange-900/80 px-4 py-4 text-base font-bold text-white transition-colors hover:bg-orange-900">
+<span class="material-symbols-outlined">add</span>
+          Add Fuel
+        </button>
+<button class="flex cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-primary/40 px-4 py-4 text-base font-bold text-white/50">
+<span class="material-symbols-outlined">filter_alt</span>
+          Filter Syrup
+        </button>
+</div>
+</footer>
 </div>
